@@ -29,7 +29,6 @@ namespace Seven
         {
             Init();
             InitializeComponent();
-            // test awd awdawd
         }
 
         public void Init()

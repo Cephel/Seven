@@ -22,7 +22,6 @@ namespace Seven
         {
             get { return _modline; }
             set { _modline = value; OnPropertyChanged(); }
-            // test
         }
 
         private string _modline;
