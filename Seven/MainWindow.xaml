@@ -1,0 +1,61 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Seven.MainWindow"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Seven" Height="400" Width="640">
+    <Grid>
+        <Menu VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Load config" Click="ButtonLoadConfig"/>
+                <MenuItem Header="Save config" Click="ButtonSaveConfig"/>
+            </MenuItem>
+            <MenuItem Header="Preferences">
+                <MenuItem Header="Setup steam folder" Click="ButtonSetSteamFolder"/>
+                <MenuItem Header="Setup addon folder" Click="ButtonSetAddonFolder"/>
+                <Separator Height="1"/>
+                <CheckBox Content="-nosplash" IsChecked="{Binding Settings.NoSplash}"/>
+                <CheckBox Content="-showScriptErrors" IsChecked="{Binding Settings.ShowScriptErrors}"/>
+                <CheckBox Content="-world=empty" IsChecked="{Binding Settings.EmptyWorld}"/>
+            </MenuItem>
+        </Menu>
+        <StatusBar VerticalAlignment="Bottom">
+            <StatusBarItem Content="Steamfolder:" VerticalAlignment="Top"/>
+            <StatusBarItem Content="{Binding Settings.SteamFolder}" VerticalAlignment="Top"/>
+            <Separator/>
+            <StatusBarItem Content="Addonfolder:" VerticalAlignment="Top"/>
+            <StatusBarItem Content="{Binding Settings.AddonFolder}" VerticalAlignment="Top"/>
+        </StatusBar>
+        <TabControl Margin="10,23,10,27">
+            <TabItem Header="Launcher">
+                <Grid Background="#FFE5E5E5">
+                    <ListView Margin="10,35" ItemsSource="{Binding Launcher.Addons}">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Checked="ButtonCheckboxChecked" Unchecked="ButtonCheckboxUnchecked" IsChecked="{Binding Active}"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                                <GridViewColumn Header="Path" DisplayMemberBinding="{Binding Path}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Button Click="ButtonLaunchGame" Content="Launch" Margin="0,0,10,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+                    <TextBox Margin="10,0,115,10" TextWrapping="Wrap" Text="{Binding Launcher.Modline}" Height="20" VerticalAlignment="Bottom"/>
+                    <CheckBox Content="Unused right now" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Button Click="ButtonRefresh" Content="Refresh" Margin="0,10,10,0" VerticalAlignment="Top" Height="20" RenderTransformOrigin="0.333,1.333" HorizontalAlignment="Right" Width="75"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Downloader">
+                <Grid Background="#FFE5E5E5">
+                    <Button Click="ButtonStartSync" Content="Start Sync" Margin="0,0,10,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="100"/>
+                    <TextBlock Margin="10,10,10,35" Text="Unused right now. Start Sync launches BTSync in user mode. This will be automated in the future."/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
