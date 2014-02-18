@@ -9,3 +9,8 @@ Uses BTSync
 
 READ THE WIKI
 =============
+
+IMPORTANT
+=========
+1. The launcher only works if you clean out your steam launch options for arma 3
+2. This program is unfinished, use the issue tracker
