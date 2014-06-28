@@ -1,5 +1,5 @@
-Seven
-=====
+Seven ( Discontinued )
+======================
 
 An arma 3 mod launcher / downloader
 
@@ -7,8 +7,10 @@ Uses BTSync
 
 6+1
 
+Discontinued because Bohemia is making their own launcher now apparently
+
 READ THE WIKI
-=============
+-------------
 
 IMPORTANT
 =========
